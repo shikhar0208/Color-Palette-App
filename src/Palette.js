@@ -41,3 +41,4 @@ class Palette extends React.Component {
 }
 
 export default Palette;
+
