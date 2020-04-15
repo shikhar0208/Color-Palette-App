@@ -10,19 +10,19 @@ import "rc-slider/assets/index.css";
 import './Navbar.css';
 
 class Navbar extends React.Component {
-  state = { format: "hex", open:false }
+  state = { format: "hex", open: false }
 
   handleFormatChange = (e) => {
     this.setState({
       format: e.target.value,
       open: true
-    }, 
+    },
       () => this.props.handleChange(this.state.format)
     );
   }
 
   closeSnackbar = () => {
-    this.setState({open: false})
+    this.setState({ open: false })
   }
 
   render() {
@@ -31,18 +31,20 @@ class Navbar extends React.Component {
         <div className="logo">
           <Link to="/">reactcolorpicker</Link>
         </div>
-        <div className="slider-container">
-          <span>Level: {this.props.level}</span>
-          <div className="slider">
-            <Slider
-              defaultValue={this.props.level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={this.props.changeLevel}
-            />
+        {this.props.showLevelBar && (
+          <div className="slider-container">
+            <span>Level: {this.props.level}</span>
+            <div className="slider">
+              <Slider
+                defaultValue={this.props.level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={this.props.changeLevel}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className="select-container">
           <Select value={this.state.format} onChange={this.handleFormatChange}>
             <MenuItem value='hex'>HEX - #ffffff</MenuItem>
@@ -50,7 +52,7 @@ class Navbar extends React.Component {
             <MenuItem value='rgba'>RGBA - rgba(255, 255, 255, 1.0)</MenuItem>
           </Select>
         </div>
-        <Snackbar 
+        <Snackbar
           anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           open={this.state.open}
           autoHideDuration={3000}
@@ -60,13 +62,13 @@ class Navbar extends React.Component {
           }}
           onClose={this.closeSnackbar}
           action={[
-            <IconButton 
-              onClick={this.closeSnackbar} 
-              color="inherit" 
-              key="close" 
+            <IconButton
+              onClick={this.closeSnackbar}
+              color="inherit"
+              key="close"
               aria-label="close"
             >
-              <CloseIcon /> 
+              <CloseIcon />
             </IconButton>
           ]}
         />
