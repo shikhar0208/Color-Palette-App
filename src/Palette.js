@@ -27,6 +27,7 @@ class Palette extends React.Component {
       name={color.name} 
       key={color.id}
       moreUrl={`/palette/${id}/${color.id}`}
+      showLink={true}
     />);
     return (
       <div className="Palette">
