@@ -13,7 +13,7 @@ class PaletteMetaForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: true,
+      stage: "form",
       newPaletteName: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -25,11 +25,25 @@ class PaletteMetaForm extends React.Component {
       )
     );
   }
+
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,
     });
   }
+
+  showEmojiPicker = () => {
+    this.setState({stage: "emoji"})
+  }
+
+  savePalette = (emoji) => {
+    const newPalette = {
+      paletteName: this.state.newPaletteName,
+      emoji: emoji.native
+    };
+    this.props.handleSubmit(newPalette);
+  }
+
   // handleClickOpen = () => {
   //   this.setState({ open: true });
   // };
@@ -40,23 +54,29 @@ class PaletteMetaForm extends React.Component {
 
   render() {
     const { newPaletteName } = this.state;
-    const {hideForm, handleSubmit} = this.props
+    const {hideForm } = this.props
 
     return (
+      <div>  
+        <Dialog open={this.state.stage === "emoji"} onClose={hideForm} >
+          <DialogTitle id="form-dialog-title">Choose A Palette Emoji</DialogTitle>
+          <Picker 
+            onSelect={this.savePalette} 
+          />
+        </Dialog>
         <Dialog
-          open={this.state.open}
+          open={this.state.stage === "form"}
           aria-labelledby="form-dialog-title"
           onClose={hideForm}
         >
           <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
           <ValidatorForm
-            onSubmit={() => handleSubmit(newPaletteName)}
+            onSubmit={this.showEmojiPicker}
           >
             <DialogContent>
               <DialogContentText>
                 Please enter a name for your new palette. Make sure it's unique!
               </DialogContentText>
-              <Picker />
               <TextValidator
                 label="Palette Name"
                 value={newPaletteName}
@@ -77,6 +97,7 @@ class PaletteMetaForm extends React.Component {
             </DialogActions>
           </ValidatorForm>
         </Dialog>
+      </div>  
     );
   }
 }
