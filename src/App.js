@@ -22,6 +22,12 @@ class App extends React.Component {
     });
   }
 
+  deletePalette = (id) => {
+    this.setState((prevState) => ({
+      palettes: prevState.palettes.filter(palette => palette.id !== id)
+    }), this.syncLocalStorage);
+  }
+
   savePalette = (newPalette) => {
     this.setState((prevState) => ({
       palettes: [...prevState.palettes, newPalette]
@@ -38,6 +44,7 @@ class App extends React.Component {
       <Switch>
         <Route path="/" exact={true} render={(routeProps) => (
             <PaletteList 
+              deletePalette={this.deletePalette}
               palettes={this.state.palettes} 
               {...routeProps}
             />
