@@ -44,7 +44,10 @@ export default {
       marginTop: "-4px"
     },
     [sizes.down("md")]: {
-      width: "120px"
+      width: "200px"
+    },
+    [sizes.down("sm")]: {
+      width: "130px"
     } 
   },
   selectContainer: {
