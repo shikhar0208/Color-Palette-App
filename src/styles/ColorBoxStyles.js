@@ -16,11 +16,11 @@ export default {
     // media query
     [sizes.down("lg")]: {   // for lg and below it (and all above is for Xl)
       width: "25%",
-      height: props => props.showingFullPalette ? "20%" : "50%",
+      height: props => props.showingFullPalette ? "20%" : "33.3333%",
     },
     [sizes.down("md")]: {
       width: "50%",
-      height: props => props.showingFullPalette ? "10%" : "50%",
+      height: props => props.showingFullPalette ? "10%" : "20%",
     },
     [sizes.down("xs")]: {     //for xs and below it.
       width: "100%",
@@ -114,7 +114,10 @@ export default {
       textAlign: "center",
       marginBottom: "0",
       padding: "0.8rem",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
+      [sizes.down("xs")]: {
+        fontSize: "4.5rem"
+      }
     },
     "& p": {
       fontSize: "1.6rem",
