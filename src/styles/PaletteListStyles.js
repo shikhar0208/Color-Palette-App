@@ -11,13 +11,13 @@ export default {
     }
   },
   root: {
-    minHeight: "100vh",
+    height: "100vh",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
     backgroundColor: "#394bad",
     backgroundImage: `url(${bg})`,
-    // overflow: "scroll"
+    overflow: "scroll"
   },
   heading: {
     fontSize: "2rem",
