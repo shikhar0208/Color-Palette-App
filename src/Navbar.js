@@ -33,11 +33,11 @@ class Navbar extends React.Component {
     return (
       <header className={classes.Navbar}>
         <div className={classes.logo}>
-          <Link to="/">reactcolorpicker</Link>
+          <Link to="/">colorpicker</Link>
         </div>
         {showLevelBar && (
           <div>
-            <span>Level: {level}</span>
+            <span className={classes.level}>Level: {level}</span>
             <div className={classes.slider}>
               <Slider
                 defaultValue={level}

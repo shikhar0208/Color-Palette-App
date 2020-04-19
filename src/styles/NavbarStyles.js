@@ -21,7 +21,13 @@ export default {
       color: "black"
     },
     [sizes.down("xs")]: {
-      display: "none"
+      fontSize: "1.2rem"
+    }
+  },
+  level: {
+    [sizes.down("xs")]: {
+      fontSize: "0.9rem",
+      marginLeft: "12px"
     }
   },
   slider: {
@@ -53,5 +59,10 @@ export default {
   selectContainer: {
     marginLeft: "auto",
     marginRight: "1rem",
+    "& .MuiInputBase-input": {
+      [sizes.down("xs")]: {
+        fontSize: "0.8rem"
+      }
+    }
   }
 };
