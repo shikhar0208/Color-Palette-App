@@ -17,7 +17,7 @@ export default {
     justifyContent: "center",
     backgroundColor: "#394bad",
     backgroundImage: `url(${bg})`,
-    overflow: "scroll"
+    overflow: "auto"
   },
   heading: {
     fontSize: "2rem",
